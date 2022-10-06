@@ -1,3 +1,6 @@
+import os
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import pygame
 import random
 
@@ -8,7 +11,7 @@ screen = pygame.display.set_mode((800, 800))
 
 
 #background
-background = pygame.image.load('bg.png')
+background_img = pygame.image.load("bg.png").convert()
 
 
 #title and icon
@@ -27,8 +30,8 @@ playerX_change = 0
 enemyImg = pygame.image.load('fox.png')
 enemyX = random.randint(0, 800)
 enemyY = random.randint(100, 150)
-enemyX_change = 5
-enemyY_change = 60
+enemyX_change = 1.5
+enemyY_change = 25
 
 def player(x, y):
     screen.blit(playerImg, (x, y))
@@ -44,7 +47,7 @@ while running:
     screen.fill((0, 0, 0))
 
     #background image
-    screen.blit(background, (0,0))
+    screen.blit(background_img, (0,0))
 
 
     for event in pygame.event.get():
