@@ -1,3 +1,6 @@
+import os
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import pygame
 import random
 import math
@@ -9,7 +12,8 @@ pygame.init()  #Initialize the pygame
 screen = pygame.display.set_mode((800, 800))
 
 # background
-background = pygame.image.load('bg.png')
+background_img = pygame.image.load("bg.png").convert()
+
 
 # background music
 mixer.music.load('background.mp3')
@@ -168,7 +172,7 @@ while running:
     screen.fill((0, 0, 0))
 
     # background image
-    screen.blit(background, (0, 0))
+    screen.blit(background_img, (0, 0))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -209,7 +213,7 @@ while running:
     for i in range(num_of_enemies):
 
         # game over
-        if enemyY[i] > 555:
+        if enemyY[i] > 560:
 
             for j in range(num_of_enemies):
                 enemyY[j] = 2000
@@ -220,13 +224,13 @@ while running:
 
         enemyX[i] += enemyX_change[i]
         if enemyX[i] <= 0:
-            enemyX_change[i] = 5
+            enemyX_change[i] = 2
             enemyY[i] += enemyY_change[i]
         elif enemyX[i] >= 736:
-            enemyX_change[i] = -5
+            enemyX_change[i] = -2
             enemyY[i] += enemyY_change[i]
 
-        if enemyY[i] > 555:
+        if enemyY[i] > 560:
             game_over_Sound = pygame.mixer.Sound('game over.wav')
             game_over_Sound.play(0)
 
