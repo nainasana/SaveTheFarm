@@ -1,3 +1,6 @@
+import os
+
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 import pygame
 import random
 import math
@@ -8,7 +11,7 @@ pygame.init()  # Initialize the pygame
 screen = pygame.display.set_mode((800, 800))
 
 # background
-background = pygame.image.load('bg.png')
+background_img = pygame.image.load("bg.png").convert()
 
 # title and icon
 pygame.display.set_caption("Save The Farm")
@@ -25,8 +28,8 @@ playerX_change = 0
 enemyImg = pygame.image.load('fox.png')
 enemyX = random.randint(0, 735)
 enemyY = random.randint(100, 150)
-enemyX_change = 5
-enemyY_change = 60
+enemyX_change = 1.5
+enemyY_change = 25
 
 # balloon
 
@@ -75,7 +78,7 @@ while running:
     screen.fill((0, 0, 0))
 
     # background image
-    screen.blit(background, (0, 0))
+    screen.blit(background_img, (0, 0))
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
