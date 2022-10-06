@@ -78,8 +78,8 @@ for i in range(num_of_enemies):
     enemyImg.append(pygame.image.load('fox.png'))
     enemyX.append(random.randint(0, 735))
     enemyY.append(random.randint(200, 301))
-    enemyX_change.append(4)
-    enemyY_change.append(60)
+    enemyX_change.append(1.5)
+    enemyY_change.append(25)
 
 # balloon
 
